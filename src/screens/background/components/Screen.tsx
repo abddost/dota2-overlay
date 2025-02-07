@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './Overlay.css';
 import {
   REQUIRED_FEATURES,
   WINDOW_NAMES,
   RETRY_TIMES,
   DISPLAY_OVERWOLF_HOOKS_LOGS,
-  GAME_EVENTS,
+  // GAME_EVENTS,
 } from "app/shared/constants";
 import { useGameEventProvider, useWindow } from "overwolf-hooks";
 import { useCallback } from "react";
@@ -29,13 +29,13 @@ interface GameStats {
   heroName: string;
 }
 
-interface GameEventData {
-  name: string;
-  data: {
-    gold?: string;
-    // Add other potential properties here
-  };
-}
+// interface GameEventData {
+//   name: string;
+//   data: {
+//     gold?: string;
+//     // Add other potential properties here
+//   };
+// }
 
 const BackgroundWindow = () => {
   const [desktop] = useWindow(DESKTOP, DISPLAY_OVERWOLF_HOOKS_LOGS);
@@ -293,77 +293,6 @@ const BackgroundWindow = () => {
           </div>
         )}
       </div>
-      <style>{`
-        .overlay-container {
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          z-index: 9999;
-        }
-
-        .stats-panel {
-          background: rgba(0, 0, 0, 0.8);
-          border-radius: 8px;
-          padding: 12px;
-          color: white;
-          font-family: Arial, sans-serif;
-        }
-
-        .header {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          margin-bottom: 10px;
-        }
-
-        .toggle-button {
-          background: #4a4a4a;
-          border: none;
-          color: white;
-          padding: 4px 8px;
-          border-radius: 4px;
-          cursor: pointer;
-        }
-
-        .basic-stats {
-          display: flex;
-          flex-direction: column;
-          gap: 10px;
-        }
-
-        .stat-item {
-          display: flex;
-          justify-content: space-between;
-          gap: 10px;
-        }
-
-        .stat-label {
-          font-weight: bold;
-        }
-
-        .kda-container {
-          display: flex;
-          gap: 10px;
-        }
-
-        .kda-item {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-
-        .advanced-stats {
-          margin-top: 10px;
-          padding-top: 10px;
-          border-top: 1px solid #666;
-        }
-
-        .stat-grid {
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 10px;
-        }
-      `}</style>
     </div>
   );
 };
